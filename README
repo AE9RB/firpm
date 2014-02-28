@@ -1,0 +1,8 @@
+This is an exploratory program to look at the suitability of Go language
+for further development into real-time DSP and SDR applications.
+
+We will be looking at performance of FIR filter generation.
+http://en.wikipedia.org/wiki/Parks–McClellan_filter_design_algorithm
+
+Usage: go run firpm.go
+(not intended to build into an executable)
