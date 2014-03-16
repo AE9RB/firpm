@@ -9,6 +9,6 @@ http://en.wikipedia.org/wiki/Parks–McClellan_filter_design_algorithm
 Here's my run times:
 
          C:   2.07ms
-        Go:   3.03ms
+        Go:   2.93ms
 Ruby 2.0.0:  85.50ms
 Ruby 1.9.2: 190.02ms

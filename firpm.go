@@ -104,7 +104,7 @@ type firpm struct {
 	e, x, y, ad   []float64
 }
 
-func (f firpm) run() error {
+func (f *firpm) run() error {
 
 	f.nbands = len(f.wtx)
 	if f.nbands < 1 || len(f.fx) != f.nbands*2 || len(f.edge) != f.nbands*2 {
@@ -283,7 +283,7 @@ func (f firpm) run() error {
 	return nil
 }
 
-func (f firpm) calcParams() {
+func (f *firpm) calcParams() {
 	for i := 0; i <= f.nfcns; i++ {
 		f.x[i] = math.Cos(Pi2 * f.grid[f.iext[i]])
 	}
@@ -318,13 +318,13 @@ func (f firpm) calcParams() {
 	}
 }
 
-func (f firpm) calcError() {
+func (f *firpm) calcError() {
 	for i := range f.e {
 		f.e[i] = f.wt[i] * (f.des[i] - f.computeA(f.grid[i]))
 	}
 }
 
-func (f firpm) computeA(freq float64) float64 {
+func (f *firpm) computeA(freq float64) float64 {
 	numer, denom := 0.0, 0.0
 	xc := math.Cos(Pi2 * freq)
 	for i := 0; i <= f.nfcns; i++ {
@@ -341,7 +341,7 @@ func (f firpm) computeA(freq float64) float64 {
 	return numer / denom
 }
 
-func (f firpm) search() {
+func (f *firpm) search() {
 	k := 0
 	if ((f.e[0] > 0) && (f.e[0] > f.e[1])) ||
 		((f.e[0] < 0) && (f.e[0] < f.e[1])) {
@@ -395,7 +395,7 @@ func (f firpm) search() {
 	}
 }
 
-func (f firpm) done() bool {
+func (f *firpm) done() bool {
 	min := math.Abs(f.e[f.iext[0]])
 	max := min
 	for i := 1; i <= f.nfcns; i++ {
