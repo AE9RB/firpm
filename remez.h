@@ -21,6 +21,10 @@
 #ifndef __REMEZ_H__
 #define __REMEZ_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define BANDPASS       1
 #define DIFFERENTIATOR 2
 #define HILBERT        3
@@ -40,6 +44,10 @@
 void remez(double h[], int numtaps,
            int numband, double bands[], double des[], double weight[],
            int type);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* __REMEZ_H__ */
 
